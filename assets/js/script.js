@@ -1,4 +1,4 @@
-var headerEl = $(".container");
+var headerEl = $("#currentDay");
 // console.log(headerEl);
 var dateEl = $("<p>");
 headerEl.append(dateEl);
