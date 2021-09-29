@@ -3,8 +3,8 @@ var headerEl = $("#currentDay");
 var dateEl = $("<p>");
 headerEl.append(dateEl);
 
-var today = function () {
-    let dateTime = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+function today() {
+    let dateTime = moment().format("dddd, MMMM Do YYYY, h:mm a");
     console.log(dateTime);
     dateEl.text(dateTime);
 }
@@ -64,6 +64,8 @@ function renderInput() {
 
 $(".saveBtn").on("click", getInput);
 
-setInterval(today, 1000);
+today();
+currentTime();
 renderInput();
-setInterval(currentTime, 1000);
+setInterval(currentTime, 60000);
+setInterval(today, 60000);
