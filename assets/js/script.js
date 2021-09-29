@@ -4,12 +4,33 @@ var dateEl = $("<p>");
 headerEl.append(dateEl);
 
 var today = function () {
-    var dateTime = moment().format("MMMM Do YYYY hh:mm:ss a");
+    let dateTime = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+    console.log(dateTime);
     dateEl.text(dateTime);
 }
-setInterval(today, 1000);
 
+// var time = moment().format("h:mm");
+// setInterval(time, 1000);
+// console.log(time);
 
+function currentTime() {
+    // console.log("Check is happening");
+    let currentTime = moment().hour();
+    $(".row").each(function() {
+        // console.log(this);
+        // console.log($(this).children("textarea").attr("time"));
+        let rowTime = $(this).children("textarea").attr("time");
+        if(parseInt(rowTime) < currentTime) {
+            $(this).children("textarea").addClass("past");
+        }
+        if(parseInt(rowTime) == currentTime) {
+            $(this).children("textarea").addClass("present");
+        }
+        if(parseInt(rowTime) > currentTime) {
+            $(this).children("textarea").addClass("future");
+        }
+    });
+}
 
 function getInput() {
     let timeStore = $(this).attr("id");
@@ -43,4 +64,6 @@ function renderInput() {
 
 $(".saveBtn").on("click", getInput);
 
+setInterval(today, 1000);
 renderInput();
+setInterval(currentTime, 1000);
