@@ -1,9 +1,7 @@
 var headerEl = $("#currentDay");
 // console.log(headerEl);
 var dateEl = $("<p>");
-var timeBlock = $(".container");
 headerEl.append(dateEl);
-
 
 var today = function () {
     var dateTime = moment().format("MMMM Do YYYY hh:mm:ss a");
@@ -14,8 +12,35 @@ setInterval(today, 1000);
 
 
 function getInput() {
-    var inputGrab = $("#schedule").val();
-    console.log("Input was grabbed: " + inputGrab);
+    let timeStore = $(this).attr("id");
+    console.log(timeStore);
+    let timeInput = $(this).siblings('textarea').val();
+    console.log(timeInput);
+    localStorage.setItem(timeStore, timeInput);
 }
 
-timeBlock.on("click", ".btn", getInput);
+function renderInput() {
+    let nineAm = localStorage.getItem("scheduleNine");
+    let tenAm = localStorage.getItem("scheduleTen");
+    let elevenAm = localStorage.getItem("scheduleEleven");
+    let twelvePm = localStorage.getItem("scheduleTwelve");
+    let onePm = localStorage.getItem("scheduleOne");
+    let twoPm = localStorage.getItem("scheduleTwo");
+    let threePm = localStorage.getItem("scheduleThree");
+    let fourPm = localStorage.getItem("scheduleFour");
+    let fivePm = localStorage.getItem("scheduleFive");
+
+    $("#nine").text(nineAm);
+    $("#ten").text(tenAm);
+    $("#eleven").text(elevenAm);
+    $("#twelve").text(twelvePm);
+    $("#one").text(onePm);
+    $("#two").text(twoPm);
+    $("#three").text(threePm);
+    $("#four").text(fourPm);
+    $("#five").text(fivePm);
+}
+
+$(".saveBtn").on("click", getInput);
+
+renderInput();
