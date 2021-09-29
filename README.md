@@ -16,7 +16,7 @@ And the right most element is a save button that saves the text in the middle ar
 
 The scheduler also keeps track of the current, past, and future hours of the day. It updates all of the hours by color with red signifying the current hour,
 green for future hours, and grey for past hours.<br/><br/> 
-![Color coded time blocks](./assets/images/Color-code-blocks.png)<br/><br/>
+![Color coded time blocks](./assets/images/Color-code-blocks.PNG)<br/><br/>
 
 ## Languages Used
 The app was written in Javascript/HTML/CSS and involves the use of web APIs, such as jQuery, as well as third party APIs, such as moment.js and bootstrap. The layout of the page
